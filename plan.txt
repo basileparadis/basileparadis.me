@@ -1,0 +1,19 @@
+Personnal Page Thomasparadis.me
+
+Thomas Paradis
+
+Full-stack software engineer passionate about web technologies and artificial intelligence. Graduated with a master's degree from Tsinghua university (the top one in China), I was one of the early employees at Aibee, a AI startup where I contributed to building the core face recognition infrastructure, processing video data for hundreds of stores and shopping malls. I've also designed, implemented and deployed multiple web services for demonstration to our clients, under tight deadlines. Fluent in Chinese, English and French, I have experience working in entirely chinese work environments. 
+Github/Facebook
+
+About 
+
+CV / experience / skills
+
+
+Projects
+
+Wikipopup, Webcrawler, Juicebar
+
+Contact
+
+EN/FR/中/РЯ

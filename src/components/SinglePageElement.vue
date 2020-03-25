@@ -1,0 +1,42 @@
+<template>
+  <section
+    :id="sectionName"
+    class="section"
+    :class="sectionName"
+  >
+    <!-- <div class="notification about-us"> -->
+    <div
+      class="columns is-gapless"
+      :class="{ 'reversed': reversed}"
+    >
+      <div class="column is-5">
+        <slot name="media"></slot>
+
+      </div>
+      <div class="column">
+        <div class="section">
+          <div class="columns is-centered is-vcentered">
+            <div class="column is-8">
+              <slot name="content"></slot>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- </div> -->
+    </div>
+  </section>
+
+</template>
+
+<script>
+export default {
+  name: "SinglePageElement",
+  props: {
+    reversed: Boolean,
+    text: String,
+    sectionName: String
+  }
+};
+</script>
+
