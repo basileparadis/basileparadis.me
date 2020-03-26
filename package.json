@@ -6,7 +6,7 @@
   "scripts": {
     "css-build": "node-sass --omit-source-map-url src/assets/sass/bulma.sass src/assets/css/bulma.css & node-sass --omit-source-map-url src/assets/scss/core.scss src/assets/css/core.css",
     "css-watch": "npm run css-build -- --watch",
-    "dev": "concurrently --kill-others \"npm run dev-wp\" \"npm run css-watch\"",
+    "dev": "concurrently --kill-others npm:dev-wp npm:css-watch",
     "build": "rm -rf docs/* && npx webpack --progress --config webpack.config.prod.js",
     "dev-wp": "npx webpack-dev-server --progress --config webpack.config.dev.js",
     "start": "npm run dev"

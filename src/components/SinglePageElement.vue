@@ -9,9 +9,8 @@
       class="columns is-gapless"
       :class="{ 'reversed': reversed}"
     >
-      <div class="column is-5">
+      <div class="column is-5 media">
         <slot name="media"></slot>
-
       </div>
       <div class="column">
         <div class="section">

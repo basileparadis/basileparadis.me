@@ -13,7 +13,7 @@ export function singlePageFeatures() {
     for (let i = 0; i < navItems.length; i++)
         navSections[i] = document.getElementById(navItems[i].dataset.target);
 
-    const menuBarHeight = document.getElementById("menubar").offsetHeight;
+    const menuBarHeight = document.getElementsByClassName('main-nav')[0].offsetHeight
     function isVisible(ele) {
         const r = ele.getBoundingClientRect();
         const h = window.innerHeight || document.documentElement.clientHeight;
@@ -28,12 +28,17 @@ export function singlePageFeatures() {
     function activateIfVisible() {
         for (let b = true, i = 0; i < navItems.length; i++) {
             if (b && isVisible(navSections[i])) {
+                document.getElementsByClassName('paradis')[0].classList.add(navItems[i].dataset.target)
                 navItems[i].classList.add("is-active");
                 b = false;
-            } else navItems[i].classList.remove("is-active");
+            } else {
+                document.getElementsByClassName('paradis')[0].classList.remove(navItems[i].dataset.target)
+                navItems[i].classList.remove("is-active");
+            }
         }
     }
     var isTicking = null;
+    activateIfVisible();
     window.addEventListener(
         "scroll",
         () => {
