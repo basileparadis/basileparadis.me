@@ -2,7 +2,7 @@
   <section class="container">
     <!-- <div class="notification about-us"> -->
     <div
-      class="columns is-gapless"
+      class="columns"
       :class="{ 'reversed': reversed}"
     >
       <div class="column is-5 media">
@@ -11,7 +11,7 @@
       <div class="column">
         <div class="section">
           <div class="columns is-centered is-vcentered">
-            <div class="column is-8">
+            <div class="column is-12">
               <slot name="content"></slot>
             </div>
           </div>

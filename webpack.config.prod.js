@@ -53,6 +53,7 @@ config.plugins = [
   new HtmlWebpackPlugin({
     template: path.join(__dirname, "src", "index.template.html"),
     inject: "head",
+    favicon: "./src/assets/img/favicon.ico",
     minify: {
       removeComments: true
     },

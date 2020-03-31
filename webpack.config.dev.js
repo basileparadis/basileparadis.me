@@ -83,7 +83,8 @@ const config = {
     }),
     new HtmlWebpackPlugin({
       inject: "head",
-      template: path.join(srcDir, "index.template.html")
+      template: path.join(srcDir, "index.template.html"),
+      favicon: "./src/assets/img/favicon.ico"
     }),
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: "defer"
