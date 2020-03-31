@@ -49,8 +49,7 @@ body {
   .navbar-item.is-active.about-me {
     color: #f42a52; }
   .navbar-item.is-active.projects {
-    color: #46af6b;
-    transition: color 2s; }
+    color: #46af6b; }
   .navbar-item.is-active.contact {
     color: #ab5af6; }
 
@@ -94,20 +93,29 @@ body {
   justify-content: center; }
 
 .medaillon {
-  margin-top: 30px;
-  height: 200px;
-  border-radius: 100px; }
+  height: 280px;
+  border-radius: 140px;
+  align-self: flex-start; }
+  @media screen and (min-width: 769px), print {
+    .medaillon {
+      margin-top: 15vh; } }
 
-.section .columns.reversed {
+.columns.reversed {
   flex-direction: row-reverse; }
 
-.section.projects img {
+.projects img {
   border-radius: 15px; }
 
-.section .download-link {
-  color: #f42a52;
+.download-link {
+  color: black;
   font-weight: bold;
-  font-size: 20px; }
+  font-size: 20px;
+  transition: color 0.3s ease-out; }
+  .download-link:hover {
+    color: #f42a52; }
+  .download-link > svg {
+    margin-right: 8px;
+    font-size: 30px; }
 
 ::-webkit-scrollbar {
   width: 7px; }
