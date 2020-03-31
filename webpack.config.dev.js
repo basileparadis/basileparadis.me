@@ -69,7 +69,7 @@ const config = {
     extensions: [".ts", ".js", ".vue", ".styl", ".css", ".webp"],
     alias: {
       vue$: "vue/dist/vue.esm.js",
-      // bulma: "bulma/css/bulma.css",
+      bulma: "bulma/css/bulma.css",
       "@fortawesome/fontawesome-free-solid":
         "@fortawesome/fontawesome-free-solid/shakable.es.js",
       "@": srcDir

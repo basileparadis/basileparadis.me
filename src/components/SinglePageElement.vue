@@ -1,9 +1,5 @@
 <template>
-  <section
-    :id="sectionName"
-    class="section"
-    :class="sectionName"
-  >
+  <section class="container">
     <!-- <div class="notification about-us"> -->
     <div
       class="columns is-gapless"
@@ -33,8 +29,7 @@ export default {
   name: "SinglePageElement",
   props: {
     reversed: Boolean,
-    text: String,
-    sectionName: String
+    text: String
   }
 };
 </script>

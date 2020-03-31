@@ -3,3 +3,4 @@ node_modules/
 /dist
 /docs
 npm-debug.log*
+src/assets/css/core.css

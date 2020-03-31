@@ -20,15 +20,15 @@ config.externals = {
 };
 
 // Exclude CSS that will be loaded with CDN
-// config.module.rules.push({
-//   test: /bulma.css$/,
-//   use: "ignore-loader"
-// });
+config.module.rules.push({
+  test: /bulma.css$/,
+  use: "ignore-loader"
+});
 
 // Extract the vue and vue-router dependency versions from package.json so that CDN url uses same version
 let vueVersion = package.devDependencies["vue"].replace(/\^/, "");
 let vueRouterVersion = package.devDependencies["vue-router"].replace(/\^/, "");
-// let bulmaVersion = package.devDependencies["bulma"].replace(/\^/, "");
+let bulmaVersion = package.devDependencies["bulma"].replace(/\^/, "");
 
 // Note: We are *replacing* the plugin config here.
 config.plugins = [
@@ -59,7 +59,7 @@ config.plugins = [
     useCdn: true,
     vueVersion,
     vueRouterVersion,
-    // bulmaVersion
+    bulmaVersion
   }),
   new ScriptExtHtmlWebpackPlugin({
     defaultAttribute: "defer"

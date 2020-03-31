@@ -71,7 +71,6 @@ body {
         }
         &.projects {
             color: $green;
-            transition: color 2s;
         }
         &.contact {
             color: $purple;
@@ -121,32 +120,43 @@ body {
 }
 
 // ####### SECTIONS
-.column.media {
+.column.media { 
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} 
 .medaillon {
-    margin-top: 30px;
-    height:200px;
-    border-radius: 100px;
-}
-.section {
-    .columns.reversed {
-    flex-direction: row-reverse;
+    height:280px;
+    border-radius: 140px;
+    align-self: flex-start;
+    @media screen and (min-width: 769px), print	{
+        margin-top: 15vh;
     }
+}
 
-    &.projects {
-        img {
-            border-radius: 15px;
-        }
-    }
-    .download-link {
-        color: $red;
-        font-weight: bold;
-        font-size: 20px;
+.columns.reversed {
+    flex-direction: row-reverse;
+}
+
+.projects {
+    img {
+        border-radius: 15px;
     }
 }
+.download-link {
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    transition: color 0.3s ease-out;
+    &:hover { 
+        color:$red;
+    }
+    > svg {
+        margin-right: 8px;
+        font-size: 30px;
+    }
+}
+
 
 // ##### SCROLLBAR
 

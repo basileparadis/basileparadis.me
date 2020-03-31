@@ -1,4 +1,5 @@
 export function singlePageFeatures() {
+    const menuBarHeight = document.getElementsByClassName('main-nav')[0].offsetHeight
     // activate if visible
     const burger = document.getElementById("navbar-burger");
     burger.addEventListener("click", () => {
@@ -13,7 +14,6 @@ export function singlePageFeatures() {
     for (let i = 0; i < navItems.length; i++)
         navSections[i] = document.getElementById(navItems[i].dataset.target);
 
-    const menuBarHeight = document.getElementsByClassName('main-nav')[0].offsetHeight
     function isVisible(ele) {
         const r = ele.getBoundingClientRect();
         const h = window.innerHeight || document.documentElement.clientHeight;
@@ -62,7 +62,7 @@ export function singlePageFeatures() {
                 top:
                     document
                         .getElementById(e.target.dataset.target)
-                        .getBoundingClientRect().top + window.scrollY
+                        .getBoundingClientRect().top + window.scrollY - menuBarHeight
             });
         });
     }
