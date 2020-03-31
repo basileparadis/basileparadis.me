@@ -27,9 +27,9 @@
               <fa-icon :icon="['fab', 'github']" />Github</a>
             <a
               class="download-link level-item"
-              href="https://www.facebook.com/thomas.paradis"
+              href="https://www.linkedin.com/in/thomas-paradis-8ab6766a"
             >
-              <fa-icon :icon="['fab','facebook']" />Facebook</a>
+              <fa-icon :icon="['fab','linkedin']" />LinkedIn</a>
           </div>
         </div>
         <img
