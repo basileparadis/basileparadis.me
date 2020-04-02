@@ -4,6 +4,7 @@
   "description": "A Vue.js project, from 'vue-typescript-bulma-template'",
   "author": "Thomas Paradis",
   "scripts": {
+    "server": "DEBUG=* nodemon ./app/bin/www",
     "css-build": "node-sass --omit-source-map-url src/assets/scss/core.scss src/assets/css/core.css",
     "css-watch": "npm run css-build -- --watch",
     "dev": "concurrently --kill-others npm:dev-wp npm:css-watch",
@@ -13,7 +14,17 @@
     "start": "npm run dev"
   },
   "dependencies": {
-    "jquery": "^3.4.1"
+    "jquery": "^3.4.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "^4",
+    "dotenv": "^6.0.0",
+    "express": "~4.16.0",
+    "express-handlebars": "^4.0.1",
+    "http-errors": "~1.6.2",
+    "morgan": "~1.9.0",
+    "nodemailer": "^6.4.6",
+    "nodemailer-express-handlebars": "^4.0.0",
+    "nodemon": "^2.0.2"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free-solid": "^5.0.11",

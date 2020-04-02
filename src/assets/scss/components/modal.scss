@@ -1,0 +1,18 @@
+.modal {
+    svg {
+        margin-right: 10px;
+    }
+    .success svg {
+        color:green;  
+    }
+    .error svg {
+        color: red
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+        .button  {
+            width: 200px;
+        }
+    }
+}

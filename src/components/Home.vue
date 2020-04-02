@@ -154,7 +154,7 @@
           <p class="subtitle">Let's get in touch!</p>
           <div class="form-module--component--1t7o4">
             <form
-              action="https://formspree.io/mgekdqno"
+              action="/api/send-email"
               method="POST"
             >
               <div class="block"><label class="label">Email</label><input
@@ -170,6 +170,7 @@
                 ></textarea></div><button class="button is-warning">Send</button>
             </form>
           </div>
+          <EmailModal />
 
         </div>
         <!-- q=place_id:ChIJgT8y_RgayUwRRNyCn1aLHmU -->
@@ -191,10 +192,11 @@ import { Vue, Component, Prop } from "vue-property-decorator";
 import { singlePageFeatures } from "../utils/single_page";
 import SinglePageElement from "./SinglePageElement";
 import Navbar from "./Navbar";
+import EmailModal from "./EmailModal";
 
 // @Component
 export default {
-  components: { Navbar, SinglePageElement },
+  components: { Navbar, SinglePageElement, EmailModal },
   created() {
     console.log("is created");
   },
