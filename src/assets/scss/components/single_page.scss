@@ -161,6 +161,14 @@ body {
     }
 }
 
+.captcha-warning {
+    color:red;
+    flex-grow: 0.3!important;
+    border: 3px solid red;
+    border-radius: 10px;
+    padding: 5px;
+}
+
 
 // ##### SCROLLBAR
 

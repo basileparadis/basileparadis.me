@@ -1,18 +1,12 @@
 <template>
   <div>
-    <nav
-      class="main-nav navbar is-fixed-top"
-      role="navigation"
-      aria-label="main navigation"
-    >
+    <nav class="main-nav navbar is-fixed-top" role="navigation" aria-label="main navigation">
       <div class="container">
         <div class="navbar-brand">
-          <a
-            class="navbar-item logo"
-            href=""
-          >
+          <a class="navbar-item logo" href>
             <!-- 太丑了吧 <img :src="require('@/assets/img/icons/logo.webp')" /> -->
-            Thomas <b class="paradis">Paradis</b>
+            Thomas
+            <b class="paradis">Paradis</b>
           </a>
           <a
             id="navbar-burger"
@@ -27,23 +21,11 @@
             <span aria-hidden="true"></span>
           </a>
         </div>
-        <div
-          id="menubar"
-          class="navbar-menu"
-        >
+        <div id="menubar" class="navbar-menu">
           <div class="navbar-end">
-            <a
-              class="navbar-item about-me"
-              data-target="about-me"
-            >About me</a>
-            <a
-              class="navbar-item projects"
-              data-target="projects"
-            >Projects</a>
-            <a
-              class="navbar-item contact"
-              data-target="contact"
-            >Contact</a>
+            <a class="navbar-item about-me" data-target="about-me">About me</a>
+            <a class="navbar-item projects" data-target="projects">Projects</a>
+            <a class="navbar-item contact" data-target="contact">Contact</a>
           </div>
         </div>
       </div>
@@ -54,12 +36,13 @@
 
 <script>
 import JQuery from "jquery";
-let $ = JQuery;
+
+const $ = JQuery;
 
 export default {
   mounted() {
-    let there = this;
-    $(window).scroll(function() {
+    const there = this;
+    $(window).scroll(() => {
       there.adjustShadow();
     });
 
@@ -69,12 +52,12 @@ export default {
   },
   methods: {
     adjustShadow(mutationList) {
-      var y = $(window).scrollTop();
-      let opactity =
+      const y = $(window).scrollTop();
+      const opactity =
         $(".navbar-menu").hasClass("is-active") | (y > 50)
           ? 0.2
           : 0.2 * (y / 50);
-      let shadow = `0px 0px 20px 0px rgba(0, 0, 0, ${opactity}`;
+      const shadow = `0px 0px 20px 0px rgba(0, 0, 0, ${opactity}`;
       $(".navbar").css({
         "box-shadow": shadow
       });

@@ -1,25 +1,22 @@
-"use strict";
 
 initPreloader();
 
-$(document).ready(function () {
+$(document).ready(() => {
+  feather.replace();
 
-    feather.replace();
+  initNavbar();
 
-    initNavbar();
-    
-    initMobileMenu();
+  initMobileMenu();
 
-    initSidebar();
+  initSidebar();
 
-    initModals();
+  initModals();
 
-    initScrollReveal();
+  initScrollReveal();
 
-    initBackToTop();
-    
-    initBackgroundImages();
+  initBackToTop();
 
-    initScrollToHash();
+  initBackgroundImages();
 
-})
+  initScrollToHash();
+});

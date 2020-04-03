@@ -6,12 +6,13 @@
         color:green;  
     }
     .error svg {
-        color: red
+        color: red 
     }
     .container {
         display: flex;
         justify-content: center;
         .button  {
+            margin-top:2rem;
             width: 200px;
         }
     }

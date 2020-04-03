@@ -1,44 +1,44 @@
-var express = require('express');
-var router = express.Router();
-let url = require('url')
+const express = require('express');
+const axios = require("axios")
+const { decorateRouter } = require('@awaitjs/express');
 
-var MailConfig = require('./email');
-var hbs = require('nodemailer-express-handlebars');
-var gmailTransport = MailConfig.GmailTransport;
-var smtpTransport = MailConfig.SMTPTransport;
+const router = decorateRouter(express.Router());
+
+const url = require('url');
+
+const hbs = require('nodemailer-express-handlebars');
+const MailConfig = require('./email');
+
+const smtpTransport = MailConfig.SMTPTransport;
 
 
-router.get('/email/template', (req, res, next) => {
-    MailConfig.ViewOption(gmailTransport, hbs);
-    let HelperOptions = {
-        from: '"Tariqul islam" <tariqul.islam.rony@gmail.com>',
-        to: 'tariqul@itconquest.com',
-        subject: 'Hellow world!',
-        template: 'test',
-        context: {
-            name: "tariqul_islam",
-            email: "tariqul.islam.rony@gmail.com",
-            address: "52, Kadamtola Shubag dhaka"
-        }
-    };
-    gmailTransport.sendMail(HelperOptions, (error, info) => {
-        if (error) {
-            console.log(error);
-            res.json(error);
-        }
-        console.log("email is send");
-        console.log(info);
-        res.json(info)
-    });
-});
 
-router.post('/api/send-email', (req, res, next) => {
-    const email = req.body.email || "test email"
-    const message = req.body.message || "test message"
-    // const userAgent = JSON.stringify(req.header('User-Agent'))
-    const userAgent = JSON.stringify(req.headers)
+router.postAsync('/api/send-email', async (req, res, next) => {
+    const { email, message, captchaToken } = req.body
+    if (!email || !message || !captchaToken) {
+        res.json({ success: false, message: "missing fields or captcha unsolved" })
+        return
+    }
+    let ret
+    try {
+        const params = { secret: "6LeYjOYUAAAAAHQcC-iIRbAK3XvZa_CfQ3ymEw6Z", response: captchaToken }
+        console.log(params)
+        ret = await axios.post("https://www.google.com/recaptcha/api/siteverify", null, { params: params });
+    } catch (err) {
+        res.json({ success: false, message: 'error connecting to captcha server: ' + err });
+        return
+    }
+    if (!ret.data.success) {
+        console.log(ret.data)
+
+        res.json({ success: false, message: `captcha verification failed: ${ret.data['error-codes']}` })
+        return
+    }
+
+
+    const userAgent = JSON.stringify(req.headers);
     MailConfig.ViewOption(smtpTransport, hbs);
-    let HelperOptions = {
+    const HelperOptions = {
         from: '"thomasparadis.me" <thomas.paradis22@yahoo.com>',
         // replyTo: email,
         to: 'thomasparadis22@hotmail.com',
@@ -48,26 +48,30 @@ router.post('/api/send-email', (req, res, next) => {
             email,
             message,
             info: userAgent,
-        }
+        },
     };
-    // res.send("/", { output: 'error', message: "at verify" + "a" })
-    res.redirect(url.format({ pathname: "/", query: { error: "999" } }))
-    return
-    smtpTransport.verify((error, success) => {
-        if (error) {
-            res.redirect({ output: 'error', message: "at verify" + error })
-        } else {
-            smtpTransport.sendMail(HelperOptions, (error, info) => {
+    // res.json({ success: false, message: "test" });
+    // return;
+    const sendEmail = async () => {
+        return new Promise((resolve, reject) => {
+            smtpTransport.verify((error, success) => {
                 if (error) {
-                    res.redirect("/#contact", { output: 'error', message: "at send: " + error })
-                    return
+                    res.json({ success: false, message: `at verify${error}` });
+                    resolve()
+                } else {
+                    smtpTransport.sendMail(HelperOptions, (error, info) => {
+                        if (error) {
+                            res.json({ success: false, message: `at send: ${error}` });
+                            resolve();
+                        }
+                        res.json({ success: true, message: info });
+                        resolve()
+                    });
                 }
-                res.redirect("/#contact", { output: 'success', message: info });
-                return
             });
-        }
-    })
-
+        })
+    }
+    await sendEmail()
 });
 
 module.exports = router;

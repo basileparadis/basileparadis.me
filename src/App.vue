@@ -1,16 +1,11 @@
 <template>
-  <!-- <div
-    id="app-container"
-    class="container has-text-centered"
-  > -->
-  <!-- <img src="./assets/logo.png"> -->
-  <router-view />
-  <!-- </div> -->
+  <div id="app">
+    <router-view />
+  </div>
 </template>
 
 <script lang="ts">
 import "bulma";
-import "@/assets/css/core.css";
 import "jquery";
 
 export default {
@@ -19,9 +14,12 @@ export default {
 </script>
 
 <style lang="scss">
-$font-stack: "Avenir", Helvetica, Arial, sans-serif;
-
-#app-container {
-  font-family: $font-stack;
+@import "@/assets/scss/core.scss";
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  // -webkit-font-smoothing: antialiased;
+  // -moz-osx-font-smoothing: grayscale;
+  // text-align: center;
+  // color: #2c3e50;
 }
 </style>

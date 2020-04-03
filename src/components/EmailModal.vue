@@ -1,26 +1,16 @@
 <template>
-  <div
-    class="modal"
-    :class="active? 'is-active' : ''"
-  >
+  <div class="modal" :class="active? 'is-active' : ''">
     <div class="modal-background"></div>
     <div class="modal-content box">
-      <div
-        v-if="!$route.query.error"
-        class="success"
-      >
+      <div v-if="$route.query.success=='true'" class="success">
         <h1 class="title">
           <fa-icon :icon="['fas','check-circle']" />Message successfully sent!
         </h1>
         <div class="content">
-          <p> Thank you! I will reach back to you as soon as possible</p>
-          <p>{{$route.query.message}}</p>
+          <p>Thank you! I will reach back to you as soon as possible</p>
         </div>
       </div>
-      <div
-        v-else
-        class="error"
-      >
+      <div v-else class="error">
         <h1 class="title">
           <fa-icon :icon="['fas','times-circle']" />Uh oh... Message could not be sent
         </h1>
@@ -30,17 +20,10 @@
         </div>
       </div>
       <div class="container">
-        <div
-          class="button is-primary"
-          @click="close()"
-        > Ok </div>
+        <div class="button is-primary" @click="close()">Ok</div>
       </div>
     </div>
-    <button
-      class="modal-close is-large"
-      aria-label="close"
-      @click="close()"
-    ></button>
+    <button class="modal-close is-large" aria-label="close" @click="close()"></button>
   </div>
 </template>
 
@@ -48,17 +31,16 @@
 export default {
   title: "email-modal",
   watch: {
-    $route: {
-      handler: function(val) {
-        if (val.query.output) {
+    "$route.query": {
+      handler(val) {
+        if (!!val.success) {
           this.active = true;
-          console.log("Query data: ", this.$route.query);
         } else {
           this.active = false;
         }
       },
       immediate: true,
-      deep: true
+      deep: false
     }
   },
   state: {

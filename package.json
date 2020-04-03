@@ -1,30 +1,35 @@
 {
   "name": "thomasparadis",
   "version": "1.0.0",
+  "private": true,
   "description": "A Vue.js project, from 'vue-typescript-bulma-template'",
   "author": "Thomas Paradis",
   "scripts": {
-    "server": "DEBUG=* nodemon ./app/bin/www",
-    "css-build": "node-sass --omit-source-map-url src/assets/scss/core.scss src/assets/css/core.css",
-    "css-watch": "npm run css-build -- --watch",
-    "dev": "concurrently --kill-others npm:dev-wp npm:css-watch",
-    "dev-wp": "npx webpack-dev-server --progress --config webpack.config.dev.js",
-    "online": "scp docs/* root@128.199.43.169:/srv/www/thomasparadis",
-    "build": "rm -rf docs/* && npx webpack --optimize --progress --config webpack.config.prod.js",
-    "start": "npm run dev"
+    "server": "DEBUG=tp:* nodemon ./app/bin/www",
+    "dev": "concurrently --kill-others npm:serve npm:server",
+    "online": "scp -r dist/* root@128.199.43.169:/srv/www/thomasparadis",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "jquery": "^3.4.1",
+    "@awaitjs/express": "^0.5.1",
+    "axios": "^0.19.2",
     "cookie-parser": "~1.4.3",
+    "core-js": "^3.6.4",
     "debug": "^4",
     "dotenv": "^6.0.0",
     "express": "~4.16.0",
     "express-handlebars": "^4.0.1",
     "http-errors": "~1.6.2",
+    "jquery": "^3.4.1",
     "morgan": "~1.9.0",
     "nodemailer": "^6.4.6",
     "nodemailer-express-handlebars": "^4.0.0",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.2",
+    "vue": "^2.6.11",
+    "vue-recaptcha": "^1.3.0",
+    "vue-router": "^3.1.5"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free-solid": "^5.0.11",
@@ -34,36 +39,36 @@
     "@fortawesome/vue-fontawesome": "^0.1.9",
     "bulma": "^0.8.1",
     "concurrently": "^5.1.0",
-    "css-loader": "^3",
-    "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "file-loader": "^1.1.11",
-    "html-webpack-plugin": "^3.2.0",
-    "ignore-loader": "^0.1.2",
-    "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.9.0",
-    "npm": "^6.0.0",
-    "optimize-css-assets-webpack-plugin": "^5",
-    "prerender-spa-plugin": "^3.1.0",
-    "sass-loader": "^8",
-    "script-ext-html-webpack-plugin": "^2.0.1",
-    "style-loader": "^1",
-    "ts-loader": "^4.2.0",
-    "typescript": "^2.8.3",
-    "url-loader": "^1.0.1",
-    "vue": "^2.5.16",
-    "vue-class-component": "^7",
-    "vue-loader": "^15.0.5",
-    "vue-property-decorator": "^6.0.0",
-    "vue-router": "^3.0.1",
-    "vue-style-loader": "^4.1.0",
-    "vue-template-compiler": "^2.5.16",
-    "webp-loader": "^0.6.0",
-    "webpack": "^4.20.2",
-    "webpack-cli": "^3.1.1",
-    "webpack-dev-server": "^3.1.3"
+    "@vue/cli-plugin-babel": "~4.2.0",
+    "@vue/cli-plugin-eslint": "~4.2.0",
+    "@vue/cli-plugin-router": "~4.2.0",
+    "@vue/cli-service": "~4.2.0",
+    "@vue/eslint-config-airbnb": "^5.0.2",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-vue": "^6.1.2",
+    "sass": "^1.25.0",
+    "sass-loader": "^8.0.2",
+    "vue-template-compiler": "^2.6.11"
   },
-  "engines": {
-    "node": ">= 6.0.0",
-    "npm": ">= 3.0.0"
-  }
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "@vue/airbnb"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
 }
