@@ -1,9 +1,4 @@
-# vue-typescript-bulma-template
-
-> A Vue.js template using TypeScript and Bulma
-
-![image](https://user-images.githubusercontent.com/759811/37562467-ee03902e-2a36-11e8-8b65-68745002360c.png)
-
+My personal website created using Vue-cli, Scss, node.js+Express
 
 ## Build Setup
 
@@ -16,4 +11,9 @@ npm run dev
 
 # build for production with minification
 npm run build
+
+# On production server 
+# configure nginx with default.nginx 
+npm i save-prod
+docker-compose up -d
 ```

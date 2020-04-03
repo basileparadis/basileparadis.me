@@ -16,7 +16,11 @@ const smtpTransport = MailConfig.SMTPTransport;
 router.postAsync('/api/send-email', async (req, res, next) => {
     const { email, message, captchaToken } = req.body
     if (!email || !message || !captchaToken) {
-        res.json({ success: false, message: "missing fields or captcha unsolved" })
+        res.json({ success: false, message: "Missing fields or captcha unsolved" })
+        return
+    }
+    if (!email.match(/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/)) {
+        res.json({ success: false, message: "Invalid email address" })
         return
     }
     let ret

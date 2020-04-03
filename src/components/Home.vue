@@ -172,8 +172,8 @@ export default {
   components: { Navbar, SinglePageElement, EmailModal, VueRecaptcha },
   data: () => {
     return {
-      email: "a@bas",
-      message: "test",
+      email: "",
+      message: "",
       verified: false,
       verifyWarning: false,
       captchaToken: ""
