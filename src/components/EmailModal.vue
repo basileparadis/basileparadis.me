@@ -29,28 +29,28 @@
 
 <script>
 export default {
-  title: "email-modal",
+  title: 'email-modal',
   watch: {
-    "$route.query": {
+    '$route.query': {
       handler(val) {
-        if (!!val.success) {
+        if (val.success) {
           this.active = true;
         } else {
           this.active = false;
         }
       },
       immediate: true,
-      deep: false
-    }
+      deep: false,
+    },
   },
   state: {
     query: Object,
-    active: Boolean
+    active: Boolean,
   },
   methods: {
     close() {
       this.$router.push({ query: {} });
-    }
-  }
+    },
+  },
 };
 </script>

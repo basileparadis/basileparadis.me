@@ -1,17 +1,17 @@
 <template>
   <div>
     <Navbar />
-    <div class="spacer" style="height:110px"></div>
-    <div id="about-me" class="about-me">
+    <div class="spacer" style="height:10px"></div>
+    <div id="about-me" class="subject about-me">
       <SinglePageElement>
         <div slot="content">
           <div class="title">Hi !</div>
-          <p>I am a full-stack (backend leaning) software engineer, passionate about web technologies and artificial intelligence.</p>
+          <p>I am a full-stack (backend leaning) software engineer, passionate about web technologies and AI.</p>
           <br />
-          <p>Graduated with a master's degree from Tsinghua university in Beijing, I was one of the early employees at Aibee, a AI startup where I contributed to building the core face recognition infrastructure, processing video data for hundreds of stores and shopping malls. I've also designed, implemented and deployed multiple web services for demonstration to our clients, under tight deadlines.</p>
+          <p>I graduated with a master's degree from Tsinghua university in Beijing. Then, I was one of the early employees at Aibee, an AI startup where I contributed to building the core face recognition infrastructure, processing video data for hundreds of stores and shopping malls. I've also designed, implemented and deployed multiple web services for demonstration to our clients, under tight deadlines.</p>
           <br />
           <p>In my free time, I enjoy playing guitar, working on personnal software projects and cooking.</p>
-          <p>I am also a language-learning enthousiast. I speak Chinese, English, French and Spanish, currently learning Russian.</p>
+          <p>I am also a language-learning enthusiast. I speak Chinese, English, French and Spanish, currently learning Russian.</p>
           <br />
           <div class="level">
             <a class="download-link level-item" href="https://github.com/Cephalopode">
@@ -34,14 +34,14 @@
     </div>
 
     <!-- TODO: put this section into project section -->
-    <div id="projects" class="projects">
+    <div id="projects" class="subject projects">
       <SinglePageElement reversed>
         <div slot="content">
           <div class="title">Wiki Popup</div>
           <p>Some technical terms may be difficult to translate in different languages but fear not! Wikipedia, with its millions of multi-lingual articles is here to save you!</p>
           <br />
           <p>
-            This simple extension allows you to quickly check the word translations provided by Wikipedia. Just use your mouse to highlight a word or a group of word and a popup will appear, providing translation and definition.
+            This simple chrome extension allows you to quickly check the word translations provided by Wikipedia. Just use your mouse to highlight a word or a group of words and a popup will appear, providing translation and definition.
             Just go to the options menu to configure the languages you want to appear in the popup.
           </p>
           <br />
@@ -61,7 +61,7 @@
       </SinglePageElement>
       <SinglePageElement reversed>
         <div slot="content">
-          <div class="title">PhonedicDict</div>
+          <div class="title">PhoneticDict</div>
           <p>
             Often when learning a foreign language, we hear a lot of new words.
             A french learner may hear a word that sounds like "O" but without knowing that the french spelling is "eau", they are unable to find it in a dictionary.
@@ -94,11 +94,11 @@
       <SinglePageElement reversed>
         <div slot="content">
           <div class="title">Image crawling server</div>
-          <p>A simple web crawler API that fetches all images on a given domain. Written as an excercice to test go concurrency features</p>
+          <p>A web crawler API that fetches all images on a given domain. Written as an excercice to test Go language concurrency features. It is available for demo purposes <a href="thomasparadis.me:8080">Here</a> (API only, no frontend).</p>
           <br />
           <div class="level">
             <a
-              class="download-link level-left"
+              class="download-link level-item"
               href="https://github.com/Cephalopode/mims_web_crawler"
             >
               <fa-icon :icon="['fab','github']" />Github
@@ -117,7 +117,7 @@
     <div class="hr-wrap container">
       <hr />
     </div>
-    <div id="contact" class="contact">
+    <div id="contact" class="subject contact">
       <SinglePageElement>
         <div slot="content">
           <div class="title">Contact</div>
@@ -141,7 +141,7 @@
             ></vue-recaptcha>
 
             <div class="level" style="width:300px">
-              <button class="level-left button is-warning" @click="sendEmail()">Send</button>
+              <button class="level-left button is-primary" @click="sendEmail()">Send</button>
               <p v-if="verifyWarning" class="level-left captcha-warning">Please solve captcha first</p>
             </div>
           </div>
@@ -157,28 +157,40 @@
         ></iframe>
       </SinglePageElement>
     </div>
+    <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            Designed and developped by <a href="#">Thomas Paradis</a>, using <a href="https://cli.vuejs.org/">Vue.js</a>, <a href="https://bulma.io/">Bulma</a>, <a href="https://sass-lang.com/">SASS</a> and <a href="https://expressjs.com/">Node.js+Express</a>. Inspired by <a href="https://jgthms.com/"> Jeremy Thomas.</a>
+            <br/>
+
+            <span class="copyright">The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.</span>
+          </p>
+        </div>
+      </footer>
   </div>
 </template>
 
 <script>
-import { singlePageFeatures } from "../utils/single_page";
-import SinglePageElement from "./SinglePageElement";
-import Navbar from "./Navbar";
-import EmailModal from "./EmailModal";
-import axios from "axios";
-import VueRecaptcha from "vue-recaptcha";
+import axios from 'axios';
+import VueRecaptcha from 'vue-recaptcha';
+import { singlePageFeatures } from '../utils/single_page';
+import SinglePageElement from './SinglePageElement';
+import Navbar from './Navbar';
+import EmailModal from './EmailModal';
 
 export default {
-  components: { Navbar, SinglePageElement, EmailModal, VueRecaptcha },
-  data: () => {
-    return {
-      email: "",
-      message: "",
-      verified: false,
-      verifyWarning: false,
-      captchaToken: ""
-    };
+  components: {
+    Navbar, SinglePageElement, EmailModal, VueRecaptcha,
   },
+  data: () => ({
+    email: '',
+    message: '',
+    verified: false,
+    verifyWarning: false,
+    captchaToken: '',
+  }),
   mounted() {
     singlePageFeatures();
   },
@@ -198,37 +210,37 @@ export default {
         return;
       }
       axios
-        .post("/api/send-email", {
+        .post('/api/send-email', {
           email: this.email,
           message: this.message,
-          captchaToken: this.captchaToken
+          captchaToken: this.captchaToken,
         })
-        .then(ret => {
+        .then((ret) => {
           console.log(ret);
-          let params = {
+          const params = {
             success: ret.data.success.toString(),
-            message: ret.data.message
+            message: ret.data.message,
           };
           if (!ret.data.success) {
             this.onSendError(params);
             return;
           }
           this.$router.push({ query: params });
-          this.email = "";
-          this.message = "";
+          this.email = '';
+          this.message = '';
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err);
-          let params = {
-            success: "false",
-            message: err.toString()
+          const params = {
+            success: 'false',
+            message: err.toString(),
           };
           this.onSendError(params);
         });
       this.$refs.captcha.reset();
       this.verified = false;
       this.verifyWarning = false;
-    }
-  }
+    },
+  },
 };
 </script>

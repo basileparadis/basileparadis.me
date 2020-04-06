@@ -1,7 +1,7 @@
 <template>
   <section class="container">
     <!-- <div class="notification about-us"> -->
-    <div class="columns" :class="{ 'reversed': reversed}">
+    <div class="columns" :class="{ reversed: reversed }">
       <div class="column is-5 media">
         <slot name="media"></slot>
       </div>
@@ -22,10 +22,10 @@
 
 <script>
 export default {
-  name: "SinglePageElement",
+  name: 'SinglePageElement',
   props: {
     reversed: Boolean,
-    text: String
-  }
-};
+    text: String,
+  },
+}
 </script>

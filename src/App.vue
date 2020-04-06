@@ -5,16 +5,18 @@
 </template>
 
 <script lang="ts">
-import "bulma";
-import "jquery";
+// TODO: each section takes a full vertical screen with 100vh
+
+import 'bulma'
+import 'jquery'
 
 export default {
-  name: "App"
-};
+  name: 'App',
+}
 </script>
 
 <style lang="scss">
-@import "@/assets/scss/core.scss";
+@import '@/assets/scss/core.scss';
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   // -webkit-font-smoothing: antialiased;

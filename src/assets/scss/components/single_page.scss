@@ -1,190 +1,206 @@
 $white: rgb(245, 245, 245);
-$red : #f42a52;
+$red: #f42a52;
 $green: #46af6b;
 $purple: #ab5af6;
 
-
 body {
-    background-color: $white;
+  background-color: $white;
 }
 
 // ### RESET BULMA NABAR PROPERTIES
 .navbar {
-    font-size: 21px;
-    padding: 1em 1.5em;
-    background-color: $white;
-    .navbar-brand {
-        align-items: center;
-    }
-   .logo {
-       display: flex;
-       flex-direction:row !important ;
-       font-size: 30px; 
-   }
-   .navbar-item:hover {
+  font-size: 21px;
+  padding: 1em 1.5em;
+  background-color: $white;
+  .navbar-brand {
+    align-items: center;
+  }
+  .logo {
+    display: flex;
+    flex-direction: row !important ;
+    font-size: 30px;
+  }
+  .navbar-item:hover {
     background-color: inherit;
     color: inherit;
-    }
+  }
 }
- .navbar-menu {
-    background-color: inherit; 
-    box-shadow: none;
-    .is-active {
-        background-color: inherit !important;
-    }
+.navbar-menu {
+  background-color: inherit;
+  box-shadow: none;
+  .is-active {
+    background-color: inherit !important;
+  }
 }
 .navbar-burger {
-    span {
-        height:2px
-    }
-    &:hover {
-        background-color: inherit;
-    }
+  span {
+    height: 2px;
+  }
+  &:hover {
+    background-color: inherit;
+  }
 }
 
 // ### LOGO
 .paradis {
-    font-size: 35px;
-    transition:color 0.4s ease-out;
-    &.about-me {
-        color: $red;
-    }
-    &.projects {
-        color: $green;
-    }
-    &.contact {
-        color: $purple;
-    }
+  font-size: 35px;
+  transition: color 0.4s ease-out;
+  &.about-me {
+    color: $red;
+  }
+  &.projects {
+    color: $green;
+  }
+  &.contact {
+    color: $purple;
+  }
 }
 
 //### NABAR
 .navbar-item {
-    display: flex;
-    align-items: center;
-    justify-content:center;
-    flex-direction: column;
-    padding: 0.5rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0.5rem 1.2rem;
 
-    &.is-active {
-        &.about-me {
-            color: $red;
-        }
-        &.projects {
-            color: $green;
-        }
-        &.contact {
-            color: $purple;
-        }
+  &.is-active {
+    &.about-me {
+      color: $red;
     }
+    &.projects {
+      color: $green;
+    }
+    &.contact {
+      color: $purple;
+    }
+  }
 }
-.navbar-item:hover:after, .is-active.navbar-item:after {
-    transform:scaleX(1);
-    transform-origin: center left;
-    transition-duration:0.4s;
-    transition-timing-function: ease-out;
-
+.navbar-item:hover:after,
+.is-active.navbar-item:after {
+  transform: scaleX(1);
+  transform-origin: center left;
+  transition-duration: 0.4s;
+  transition-timing-function: ease-out;
 }
 .about-me.navbar-item:after {
-    background-color: $red;
+  background-color: $red;
 }
 .projects.navbar-item:after {
-    background-color: $green;
+  background-color: $green;
 }
 .contact.navbar-item:after {
-    background-color: $purple;
+  background-color: $purple;
 }
 .navbar-item:after {
-    content: "";
-    background-color: black;
-    width: calc(100% + 20px);
-    height: 3px;
-    position: relative;
-    bottom: -4px;
+  content: '';
+  background-color: black;
+  width: calc(100% + 20px);
+  height: 3px;
+  position: relative;
+  bottom: -4px;
 
-    transform:scaleX(0);
-    transform-origin: center left;
-    transition-duration:0.4s;
-    transition-timing-function: ease-out;
+  transform: scaleX(0);
+  transform-origin: center left;
+  transition-duration: 0.4s;
+  transition-timing-function: ease-out;
 }
 
 // ####### HR
 
 .hr-wrap {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 
-    hr {
-        background-color: $red;
-        width:50%;
-    }
+  hr {
+    background-color: $red;
+    width: 50%;
+  }
 }
 
 // ####### SECTIONS
-.column.media { 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-} 
+.subject {
+  // display: flex;
+  // align-items: center;
+  // min-height: 100vh;
+  // flex-flow:wrap;
+}
+.column.media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .medaillon {
-    width:280px;
-    border-radius: 140px;
-    align-self: center;
-    @media screen and (min-width: 769px), print	{
-        // margin-top: 15vh; 
-    }
-    @media (min-width: 1200px)	{
-        width:70%;
-        border-radius: 70%; 
-    }
+  width: 280px;
+  border-radius: 140px;
+  align-self: center;
+  @media screen and (min-width: 769px), print {
+    // margin-top: 15vh;
+  }
+  @media (min-width: 1200px) {
+    width: 70%;
+    border-radius: 70%;
+  }
 }
 
 .columns.reversed {
-    flex-direction: row-reverse;
+  flex-direction: row-reverse;
 }
 
 .projects {
-    img {
-        border-radius: 15px;
-    }
+  img {
+    border-radius: 15px;
+  }
 }
 .download-link {
-    color: black;
-    font-weight: bold;
-    font-size: 20px;
-    transition: color 0.3s ease-out;
-    &:hover { 
-        color:$red;
-    }
-    > svg {
-        margin-right: 8px;
-        font-size: 30px;
-    }
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+  transition: color 0.3s ease-out;
+  &:hover {
+    color: $red;
+  }
+  > svg {
+    margin-right: 8px;
+    font-size: 30px;
+  }
 }
 
 .captcha-warning {
-    color:red;
-    flex-grow: 0.3!important;
-    border: 3px solid red;
-    border-radius: 10px;
-    padding: 5px;
+  color: red;
+  flex-grow: 0.3 !important;
+  border: 3px solid red;
+  border-radius: 10px;
+  padding: 5px;
 }
 
+.button.is-primary {
+  background-color: $purple !important;
+  color: white;
+  &:hover {
+    background-color: #bf84f7 !important;
+  }
+}
+
+.footer {
+  .copyright {
+    font-size: 15px;
+  }
+}
 
 // ##### SCROLLBAR
 
 ::-webkit-scrollbar {
-    width: 7px;
+  width: 7px;
 }
 ::-webkit-scrollbar-track {
-    background-color: inherit;
+  background-color: inherit;
 }
-::-webkit-scrollbar-thumb        { 
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    background-color: $red; 
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background-color: $red;
 }
-
-
 
 // Old
 // .navbar.is-link {
@@ -197,7 +213,7 @@ body {
 // }
 // @font-face {
 //     font-family: funkyFont;
-//     src: url('../font/funky.woff2'); 
+//     src: url('../font/funky.woff2');
 // }
 // .section  {
 //     padding: 0rem;
@@ -229,7 +245,7 @@ body {
 //             align-items: center;
 //         }
 //     }
-//     &.about-us { 
+//     &.about-us {
 //         background-color: #ef7988;
 //     }
 //     &.menu {

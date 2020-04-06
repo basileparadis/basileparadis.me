@@ -1,6 +1,10 @@
 <template>
   <div>
-    <nav class="main-nav navbar is-fixed-top" role="navigation" aria-label="main navigation">
+    <nav
+      class="main-nav navbar is-fixed-top"
+      role="navigation"
+      aria-label="main navigation"
+    >
       <div class="container">
         <div class="navbar-brand">
           <a class="navbar-item logo" href>
@@ -24,7 +28,9 @@
         <div id="menubar" class="navbar-menu">
           <div class="navbar-end">
             <a class="navbar-item about-me" data-target="about-me">About me</a>
-            <a class="navbar-item projects" data-target="projects">Projects</a>
+            <a class="navbar-item projects" data-target="projects"
+              >My projects</a
+            >
             <a class="navbar-item contact" data-target="contact">Contact</a>
           </div>
         </div>
@@ -35,33 +41,33 @@
 </template>
 
 <script>
-import JQuery from "jquery";
+import JQuery from 'jquery'
 
-const $ = JQuery;
+const $ = JQuery
 
 export default {
   mounted() {
-    const there = this;
+    const there = this
     $(window).scroll(() => {
-      there.adjustShadow();
-    });
+      there.adjustShadow()
+    })
 
-    const observer = new MutationObserver(this.adjustShadow);
+    const observer = new MutationObserver(this.adjustShadow)
     // Start observing the target node for configured mutations
-    observer.observe($("#menubar")[0], { attributes: true });
+    observer.observe($('#menubar')[0], { attributes: true })
   },
   methods: {
     adjustShadow(mutationList) {
-      const y = $(window).scrollTop();
+      const y = $(window).scrollTop()
       const opactity =
-        $(".navbar-menu").hasClass("is-active") | (y > 50)
+        $('.navbar-menu').hasClass('is-active') | (y > 50)
           ? 0.2
-          : 0.2 * (y / 50);
-      const shadow = `0px 0px 20px 0px rgba(0, 0, 0, ${opactity}`;
-      $(".navbar").css({
-        "box-shadow": shadow
-      });
-    }
-  }
-};
+          : 0.2 * (y / 50)
+      const shadow = `0px 0px 20px 0px rgba(0, 0, 0, ${opactity}`
+      $('.navbar').css({
+        'box-shadow': shadow,
+      })
+    },
+  },
+}
 </script>

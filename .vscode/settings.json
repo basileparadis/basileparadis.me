@@ -1,7 +1,8 @@
 {
-  "files.associations": {
-    "*.vue": "vue"
-  },
-  "eslint.enable": false,
-  "vetur.format.defaultFormatter.js": "prettier",
+  "vetur.format.enable": true,
+  "vetur.format.defaultFormatterOptions": {
+    "prettier": {
+      "semi": true
+    }
+  }
 }
