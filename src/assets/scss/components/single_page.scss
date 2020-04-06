@@ -2,6 +2,7 @@ $white: rgb(245, 245, 245);
 $red: #f42a52;
 $green: #46af6b;
 $purple: #ab5af6;
+$spacer-height: 110px;
 
 body {
   background-color: $white;
@@ -35,6 +36,7 @@ body {
 .navbar-burger {
   span {
     height: 2px;
+    // width: 20px;
   }
   &:hover {
     background-color: inherit;
@@ -119,11 +121,14 @@ body {
 }
 
 // ####### SECTIONS
+.spacer {
+  height: $spacer-height;
+}
 .subject {
-  // display: flex;
-  // align-items: center;
-  // min-height: 100vh;
-  // flex-flow:wrap;
+  display: flex;
+  align-items: center;
+  min-height: calc(100vh - #{$spacer-height});
+  flex-flow: wrap;
 }
 .column.media {
   display: flex;
