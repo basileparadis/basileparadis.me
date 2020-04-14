@@ -76,7 +76,7 @@
           </p>
           <br />
           <div class="level">
-            <a class="download-link level-item" href="http://thomasparadis.me:3000/"> <fa-icon :icon="['fas', 'play-circle']" />Website </a>
+            <a class="download-link level-item" href="/phonetic_dict"> <fa-icon :icon="['fas', 'play-circle']" />Website </a>
             <a class="download-link level-item" href="https://github.com/Cephalopode/PhoneticDict_Web"> <fa-icon :icon="['fab', 'github']" />Github </a>
           </div>
         </div>
