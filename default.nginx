@@ -18,8 +18,12 @@ server {
                 alias /srv/www/juicebar;
         }
         location /phonetic_dict {
-                rewrite ^/phonetic_dict(.*) /$1 break;
+                rewrite ^/phonetic_dict/*(.*) /$1 break;
                 proxy_pass http://localhost:4002;
+        }
+	location /fetart {
+                rewrite ^/fetart/*(.*) /$1 break;
+                proxy_pass http://localhost:4004;
         }
 }
 

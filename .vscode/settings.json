@@ -2,7 +2,10 @@
   "vetur.format.enable": true,
   "vetur.format.defaultFormatterOptions": {
     "prettier": {
-      "semi": true
+      "semi": false
+    },
+    "prettyhtml": {
+      "printWidth": 160
     }
   },
   "prettier.printWidth": 160
