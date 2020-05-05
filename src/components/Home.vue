@@ -18,12 +18,8 @@
           <p>I am also a language-learning enthusiast. I speak Chinese, English, French and Spanish, currently learning Russian.</p>
           <br />
           <div class="level">
-            <a class="download-link level-item" href="https://github.com/Cephalopode">
-              <fa-icon :icon="['fab', 'github']" />Github
-            </a>
-            <a class="download-link level-item" href="https://www.linkedin.com/in/thomas-paradis-8ab6766a">
-              <fa-icon :icon="['fab', 'linkedin']" />LinkedIn
-            </a>
+            <a class="download-link level-item" href="https://github.com/Cephalopode"> <fa-icon :icon="['fab', 'github']" />Github </a>
+            <a class="download-link level-item" href="https://www.linkedin.com/in/thomas-paradis-8ab6766a"> <fa-icon :icon="['fab', 'linkedin']" />LinkedIn </a>
           </div>
         </div>
         <img slot="media" class="medaillon" :src="require('@/assets/img/photos/profil.jpg')" />
@@ -54,9 +50,7 @@
             <a class="download-link level-item" href="https://chrome.google.com/webstore/detail/wiki-popup/needbkjfeeapnlgefnpoebhojcogflej">
               <fa-icon :icon="['fab', 'chrome']" />Add to Chrome
             </a>
-            <a class="download-link level-item" href="https://github.com/Cephalopode/Wiki_popup">
-              <fa-icon :icon="['fab', 'github']" />Github
-            </a>
+            <a class="download-link level-item" href="https://github.com/Cephalopode/Wiki_popup"> <fa-icon :icon="['fab', 'github']" />Github </a>
           </div>
         </div>
         <img slot="media" class="image" :src="require('@/assets/img/illustrations/wiki-popup.png')" />
@@ -64,7 +58,10 @@
       <SinglePageElement reversed>
         <div slot="content">
           <div class="title">Fêt'Art: a simple eCommerce website</div>
-          <p>A small-scale eCommerce website, which allows customer to easily place an order through email. The product inventory and photos can be edited in real-time by the seller, using an online Google Spreadsheet.</p>
+          <p>
+            A small-scale eCommerce website, which allows customer to easily place an order through email. The product inventory and photos can be edited in
+            real-time by the seller, using an online Google Spreadsheet.
+          </p>
           <br />
           <p>
             Designed using the Vue.js design framework
@@ -72,12 +69,8 @@
           </p>
           <br />
           <div class="level">
-            <a class="download-link level-item" href="http://fetart.thomasparadis.me">
-              <fa-icon :icon="['fas', 'play-circle']" />Website
-            </a>
-            <a class="download-link level-item" href="https://github.com/Cephalopode/fetart">
-              <fa-icon :icon="['fab', 'github']" />Github
-            </a>
+            <a class="download-link level-item" href="http://fetart.thomasparadis.me"> <fa-icon :icon="['fas', 'play-circle']" />Website </a>
+            <a class="download-link level-item" href="https://github.com/Cephalopode/fetart"> <fa-icon :icon="['fab', 'github']" />Github </a>
           </div>
         </div>
         <img slot="media" class="image" :src="require('@/assets/img/illustrations/fetart.png')" />
@@ -97,12 +90,8 @@
           </p>
           <br />
           <div class="level">
-            <a class="download-link level-item" href="/phonetic_dict">
-              <fa-icon :icon="['fas', 'play-circle']" />Website
-            </a>
-            <a class="download-link level-item" href="https://github.com/Cephalopode/PhoneticDict_Web">
-              <fa-icon :icon="['fab', 'github']" />Github
-            </a>
+            <a class="download-link level-item" href="http://phonetic.thomasparadis.me"> <fa-icon :icon="['fas', 'play-circle']" />Website </a>
+            <a class="download-link level-item" href="https://github.com/Cephalopode/PhoneticDict_Web"> <fa-icon :icon="['fab', 'github']" />Github </a>
           </div>
         </div>
         <img slot="media" class="image" :src="require('@/assets/img/illustrations/phonetic_dict.png')" />
@@ -113,15 +102,11 @@
           <p>
             A web crawler API that fetches all images on a given domain. Written as an excercice to test Go language concurrency features. It is available for
             demo purposes
-            <a
-              href="thomasparadis.me:8080"
-            >Here</a> (API only, no frontend).
+            <a href="thomasparadis.me:8002">Here</a> (API only, no frontend).
           </p>
           <br />
           <div class="level">
-            <a class="download-link level-item" href="https://github.com/Cephalopode/mims_web_crawler">
-              <fa-icon :icon="['fab', 'github']" />Github
-            </a>
+            <a class="download-link level-item" href="https://github.com/Cephalopode/mims_web_crawler"> <fa-icon :icon="['fab', 'github']" />Github </a>
           </div>
         </div>
         <img slot="media" class="image" style="height:240px; margin:-50px" :src="require('@/assets/img/illustrations/icons/laptop-globe.svg')" />
@@ -146,7 +131,13 @@
               <label class="label">Message</label>
               <textarea class="textarea" name="message" v-model="message" required></textarea>
             </div>
-            <vue-recaptcha class="block" ref="captcha" sitekey="6LeYjOYUAAAAACuo69suXOKrloy9Ght4KaSpAjhY" :loadRecaptchaScript="true" @verify="setVerified"></vue-recaptcha>
+            <vue-recaptcha
+              class="block"
+              ref="captcha"
+              sitekey="6LeYjOYUAAAAACuo69suXOKrloy9Ght4KaSpAjhY"
+              :loadRecaptchaScript="true"
+              @verify="setVerified"
+            ></vue-recaptcha>
 
             <div class="level" style="width:300px">
               <button class="level-left button is-primary" @click="sendEmail()">Send</button>
@@ -169,11 +160,8 @@
       <div class="content has-text-centered">
         <p>
           Designed and developped by
-          <a href="#">Thomas Paradis</a>, using
-          <a href="https://cli.vuejs.org/">Vue.js</a>,
-          <a href="https://bulma.io/">Bulma</a>,
-          <a href="https://sass-lang.com/">SASS</a> and
-          <a href="https://expressjs.com/">Node.js+Express</a>. Inspired by
+          <a href="#">Thomas Paradis</a>, using <a href="https://cli.vuejs.org/">Vue.js</a>, <a href="https://bulma.io/">Bulma</a>,
+          <a href="https://sass-lang.com/">SASS</a> and <a href="https://expressjs.com/">Node.js+Express</a>. Inspired by
           <a href="https://jgthms.com/">Jeremy Thomas.</a>
           <br />
 
@@ -189,77 +177,77 @@
 </template>
 
 <script>
-import axios from "axios"
-import VueRecaptcha from "vue-recaptcha"
-import { singlePageFeatures } from "../utils/single_page"
-import SinglePageElement from "./SinglePageElement"
-import Navbar from "./Navbar"
-import EmailModal from "./EmailModal"
+import axios from "axios";
+import VueRecaptcha from "vue-recaptcha";
+import { singlePageFeatures } from "../utils/single_page";
+import SinglePageElement from "./SinglePageElement";
+import Navbar from "./Navbar";
+import EmailModal from "./EmailModal";
 
 export default {
   components: {
     Navbar,
     SinglePageElement,
     EmailModal,
-    VueRecaptcha
+    VueRecaptcha,
   },
   data: () => ({
     email: "",
     message: "",
     verified: false,
     verifyWarning: false,
-    captchaToken: ""
+    captchaToken: "",
   }),
   mounted() {
-    singlePageFeatures()
+    singlePageFeatures();
   },
   methods: {
     setVerified(token) {
-      console.log(token)
-      this.captchaToken = token
-      this.verified = true
-      this.verifyWarning = false
+      console.log(token);
+      this.captchaToken = token;
+      this.verified = true;
+      this.verifyWarning = false;
     },
     onSendError(params) {
-      this.$router.push({ query: params })
+      this.$router.push({ query: params });
     },
     async sendEmail() {
       if (!this.verified) {
-        this.verifyWarning = true
-        return
+        this.verifyWarning = true;
+        return;
       }
       axios
         .post("/api/send-email", {
           email: this.email,
           message: this.message,
-          captchaToken: this.captchaToken
+          captchaToken: this.captchaToken,
         })
-        .then(ret => {
-          console.log(ret)
+        .then((ret) => {
+          console.log(ret);
           const params = {
             success: ret.data.success.toString(),
-            message: ret.data.message
-          }
+            message: ret.data.message,
+          };
           if (!ret.data.success) {
-            this.onSendError(params)
-            return
+            this.onSendError(params);
+            return;
           }
-          this.$router.push({ query: params })
-          this.email = ""
-          this.message = ""
+          this.$router.push({ query: params });
+          this.email = "";
+          this.message = "";
         })
-        .catch(err => {
-          console.log(err)
+        .catch((err) => {
+          console.log(err);
           const params = {
             success: "false",
-            message: err.toString()
-          }
-          this.onSendError(params)
-        })
-      this.$refs.captcha.reset()
-      this.verified = false
-      this.verifyWarning = false
-    }
-  }
-}
+            message: err.toString(),
+          };
+          this.onSendError(params);
+        });
+      this.$refs.captcha.reset();
+      this.verified = false;
+      this.verifyWarning = false;
+    },
+  },
+};
 </script>

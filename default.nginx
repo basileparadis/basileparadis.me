@@ -1,44 +1,62 @@
 server {
-        listen 80 default_server;
-        listen [::]:80 default_server;
+	listen 80 default_server;
+	listen [::]:80 default_server;
 
-        root /srv/www/thomasparadis;
+	root /srv/www/thomasparadis;
 
-        index index.html index.htm index.nginx-debian.html;
+	index index.html index.htm index.nginx-debian.html;
 
-        server_name thomasparadis.me www.thomasparadis.me;
+	server_name thomasparadis.me www.thomasparadis.me;
 
-        location / {
-                # First attempt to serve request as file, then
-                # as directory, then fall back to displaying a 404.
-                proxy_pass http://localhost:4000;
-        #               try_files $uri $uri/ =404;
-        }
-        location /juicebar {
-                alias /srv/www/juicebar;
-        }
-        location /phonetic_dict {
-                rewrite ^/phonetic_dict/*(.*) /$1 break;
-                proxy_pass http://localhost:4002;
-        }
+	location / {
+		proxy_pass http://localhost:4000;
+	}
+	location /juicebar {
+		alias /srv/www/juicebar;
+	}
+	location /phonetic_dict {
+		rewrite ^/phonetic_dict/*(.*) /$1 break;
+		proxy_pass http://localhost:4002;
+	}
+	
 	location /fetart {
-                rewrite ^/fetart/*(.*) /$1 break;
-                proxy_pass http://localhost:4004;
-        }
+		rewrite ^/fetart/*(.*) /$1 break;
+		proxy_pass http://localhost:4004;
+	}
+		
 }
 
 server {
-        listen 80;
-
-        root /srv/www/juicebar;
-        # Add index.php to the list if you are using PHP
+	listen 80;
+	server_name fetart.ca www.fetart.ca fetart.thomasparadis.me www.fetart.thomasparadis.me;
+	location / {
+		proxy_pass http://localhost:4004;
+	}	
+}
+server {
+	listen 80;
+	server_name crud.thomasparadis.me www.crud.thomasparadis.me;
+	location / {
+		proxy_pass http://localhost:4006;
+	}
+}
+server {
+  	listen 80;
+	server_name phonetic.thomasparadis.me www.phonetic.thomasparadis.me;
+	location / {
+		proxy_pass http://localhost:4008;
+	}
+}
+server {
+	listen 80;
+	
+	root /srv/www/juicebar;
         index index.html index.htm index.nginx-debian.html;
 
         server_name juicebar.thomasparadis.me www.juicebar.thomasparadis.me;
 
         location / {
-                # First attempt to serve request as file, then
-                # as directory, then fall back to displaying a 404.
                 try_files $uri $uri/ =404;
         }
 }
+
