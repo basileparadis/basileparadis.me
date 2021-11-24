@@ -15,6 +15,7 @@ services:
       - PORT=4000
     volumes:
       - ./:/home/node/app
+    restart: "always"
     ports:
       - "4000:4000"
     command: "npm run server"
