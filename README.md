@@ -1,4 +1,4 @@
-My personal website created using Vue-cli, Scss, node.js+Express
+My personal website created using React.js, Scss, Node.js+Express
 
 ## Build Setup
 
