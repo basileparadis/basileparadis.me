@@ -2,24 +2,34 @@
 Main SCSS file / Fresh
 ========================================================================== */
 
-//Imports
-// @import 'abstracts/colors';
-// @import 'abstracts/animations';
-// @import 'layout/navbar';
-// @import 'layout/sidebar';
-// @import 'layout/sections';
-// @import 'layout/hero';
-// @import 'layout/footer';
-// @import 'components/buttons';
-// @import 'components/dropdowns';
-// @import 'components/cards';
-// @import 'components/forms';
-// @import 'components/testimonials';
-@import 'components/single_page.scss';
-@import 'components/modal.scss';
+// Imports
+// @use 'abstracts/colors';
+// @use 'abstracts/animations';
+// @use 'layout/navbar';
+// @use 'layout/sidebar';
+// @use 'layout/sections';
+// @use 'layout/hero';
+// @use 'layout/footer';
+// @use 'components/buttons';
+// @use 'components/dropdowns';
+// @use 'components/cards';
+// @use 'components/forms';
+// @use 'components/testimonials';
+@use 'components/single_page';
+@use 'components/modal';
 
-// @import 'utilities/utils';
-// @import 'layout/responsive';
+// @use 'utilities/utils';
+// @use 'layout/responsive';
 
-$slick-font-path: '/assets/fonts/';
-$slick-loader-path: '/assets/fonts/';
+$font-path: '/assets/fonts/';
+
+@font-face {
+  font-family: 'SimpleLineIcons';
+  src: url('#{$font-path}simple-line-icons.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('#{$font-path}fontawesome-webfont.woff2') format('woff2'),
+       url('#{$font-path}fontello.woff') format('woff');
+}
