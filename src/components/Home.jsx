@@ -156,7 +156,7 @@ const Home = () => {
           <div slot="content">
             <div className="title">Brotify: accorder musique avec amis</div>
             <p>
-              A small-scale social website, which allows users to see the common musical interests they share between friends with graphical details. Designed using the
+              A small-scale social website, which allows users to see the common musical interests they share between friends with graphical details. Designed using the&nbsp;
               <a href="https://www.djangoproject.com/">Django framework</a>.
             </p>
             <br />
@@ -229,7 +229,7 @@ const Home = () => {
             className="image"
             slot="media"
             style={{ width: '100%', height: '400px' }}
-            src={`https://www.google.com/maps/embed/v1/place?q=Laurier+%2F+Saint-Denis,Montreal+Canada&zoom=15&key=${process.env.REACT_APP_GOOGLE_API_KEY}`}
+            src={`https://www.google.com/maps/embed/v1/place?q=Montreal,+QC+H2T+2H3&zoom=15&key=${process.env.REACT_APP_GOOGLE_API_KEY}`}
             allowFullScreen
             title="Google Maps Location"
           ></iframe>
