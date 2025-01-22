@@ -1,12 +1,107 @@
-import React from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import Navbar from './Navbar';
 import SinglePageElement from './SinglePageElement';
 import EmailModal from './EmailModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faPlayCircle } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
+import emailjs from 'emailjs-com';
 
 const Home = () => {
+  const [rotations, setRotations] = useState({ it: 0, dev: 0 });
+  const [title, setTitle] = useState('');
+  const [typedTitle, setTypedTitle] = useState('');
+  const contactRef = useRef(null);
+  const titleInputRef = useRef(null);
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (title) {
+      let index = -1;
+      const interval = setInterval(() => {
+        setTypedTitle((prev) => {
+          const newTypedTitle = prev + title[index];
+          if (titleInputRef.current) {
+            titleInputRef.current.value = newTypedTitle;
+          }
+          return newTypedTitle;
+        });
+        index++;
+        if (index === title.length - 1) {
+          clearInterval(interval);
+        }
+      }, 100);
+      return () => clearInterval(interval);
+    }
+  }, [title]);
+
+  const handleRotate = (id, title) => {
+    setRotations((prevRotations) => ({
+      ...prevRotations,
+      [id]: prevRotations[id] + 360,
+    }));
+
+    setTimeout(() => {
+      setTitle();
+      contactRef.current.scrollIntoView({ block: "end", behavior: 'smooth' });
+      setTitle(title);
+      setTypedTitle('');
+    }, 1000);
+  };
+
+  const validateEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+  };
+
+  const handleSubmit = useCallback(async (e) => {
+    e.preventDefault();
+
+    if (!email || !message) {
+      navigate(`?success=false&message=Email et message sont requis.`);
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      navigate(`?success=false&message=Format de l'email invalide.`);
+      return;
+    }
+  
+    const templateParams = {
+      email,
+      title: titleInputRef.current.value,
+      message,
+    };
+  
+    try {
+      const response = await emailjs.send(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        process.env.REACT_APP_EMAILJS_USER_ID
+      );
+      if (response.status !== 200) {
+        throw new Error(`Failed to send email: ${response.text}`);
+      }
+      navigate('?success=true');
+    } catch (error) {
+      navigate(`?success=false&message=${error.message}&error=${error}`);
+    }
+  }, [email, message, navigate]);
+
+  useEffect(() => {
+    window.onSubmit = () => { };
+    
+    const script = document.createElement('script');
+    script.src = 'https://www.google.com/recaptcha/api.js';
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+  }, [handleSubmit]);
+
   return (
     <div>
       <Navbar />
@@ -18,11 +113,25 @@ const Home = () => {
           <p>Comment puis-je vous aider?</p>
         </div>
         <div className="level">
-          <div id="it" className="box carreGrow">
+          <div
+            id="it"
+            className="box carreGrow"
+            onClick={() => handleRotate('it', 'Dépannage informatique')}
+            style={{
+              '--rotation': `${rotations.it}deg`,
+            }}
+          >
             <div>Dépannage</div>
             <div>informatique</div>
           </div>
-          <div id="dev" className="box carreGrow">
+          <div
+            id="dev"
+            className="box carreGrow"
+            onClick={() => handleRotate('dev', 'Développement de site web')}
+            style={{
+              '--rotation': `${rotations.dev}deg`,
+            }}
+          >
             <div>Développement</div>
             <div>de site web</div>
           </div>
@@ -82,34 +191,45 @@ const Home = () => {
       <div className="hr-wrap container">
         <hr />
       </div>
-      <div id="contact" className="subject contact">
+      <div id="contact" className="subject contact" ref={contactRef}>
         <SinglePageElement>
           <div slot="content">
             <div className="title">Contact</div>
             <br />
             <p className="subtitle">Gardons contact, laissez-moi un message!</p>
-            <div className="form-module--component--1t7o4">
+            <form id="demo-form" onSubmit={handleSubmit} className="form-module--component--1t7o4">
               <div className="block">
                 <label className="label">Email</label>
-                <input className="input" type="email" required />
+                <input className="input" type="email" placeholder='example@email.com' value={email} onChange={(e) => setEmail(e.target.value)} required />
+              </div>
+              <div className="block">
+                <label className="label">Title</label>
+                <input className="input" name="title" id="title" ref={titleInputRef} required />
               </div>
               <div className="block">
                 <label className="label">Message</label>
-                <textarea className="textarea" name="message" required></textarea>
+                <textarea className="textarea" name="message" value={message} onChange={(e) => setMessage(e.target.value)} required></textarea>
               </div>
-              <div className="level" style={{ width: '300px' }}>
-                <button className="level-left button is-primary">Envoyer</button>
-                <p className="level-left captcha-warning">Please solve captcha first</p>
+              <div className="level">
+                <button
+                  className="g-recaptcha level-left button is-primary"
+                  data-sitekey={`${process.env.REACT_APP_RECAPTCHA_KEY}`}
+                  data-callback='onSubmit'
+                  data-action='submit'
+                  type="submit"
+                  onClick={(e) => handleSubmit(e)}
+                >
+                  Envoyer
+                </button>
               </div>
-            </div>
+            </form>
             <EmailModal />
           </div>
           <iframe
             className="image"
             slot="media"
-            frameBorder="0"
             style={{ width: '100%', height: '400px' }}
-            src="https://www.google.com/maps/embed/v1/place?q=Laurier+%2F+Saint-Denis,Montreal+Canada&zoom=15&key=YOUR_GOOGLE_API_KEY"
+            src={`https://www.google.com/maps/embed/v1/place?q=Laurier+%2F+Saint-Denis,Montreal+Canada&zoom=15&key=${process.env.REACT_APP_GOOGLE_API_KEY}`}
             allowFullScreen
             title="Google Maps Location"
           ></iframe>

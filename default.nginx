@@ -2,11 +2,11 @@ server {
 	listen 80 default_server;
 	listen [::]:80 default_server;
 
-	root /srv/www/thomasparadis;
+	root /srv/www/basileparadis;
 
 	index index.html index.htm index.nginx-debian.html;
 
-	server_name thomasparadis.me www.thomasparadis.me;
+	server_name basileparadis.com www.basileparadis.com;
 
 	location / {
 		proxy_pass http://localhost:4000;

@@ -10,7 +10,7 @@ const EmailModal = () => {
 
   useEffect(() => {
     const query = new URLSearchParams(location.search);
-    setActive(query.get('success') === 'true');
+    setActive(query.get('success') !== null);
   }, [location.search]);
 
   const close = () => {

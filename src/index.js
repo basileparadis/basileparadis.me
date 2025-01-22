@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import './assets/scss/core.scss';
 import 'bulma/css/bulma.min.css';
+import './assets/scss/core.scss';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

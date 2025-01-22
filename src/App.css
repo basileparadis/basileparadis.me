@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.box {
+  transition: transform 1s;
+}
+
+.spin {
+  transform: rotate(360deg);
+}
