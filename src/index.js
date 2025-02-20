@@ -5,11 +5,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bulma/css/bulma.min.css';
 import './assets/scss/core.scss';
+import { ReCaptchaProvider } from './hooks/ReCaptchaContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <ReCaptchaProvider>
     <App />
+    </ReCaptchaProvider>
   </React.StrictMode>
 );
 
